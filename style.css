@@ -1,3 +1,442 @@
+/* --- 1. RESET DAN VARIASI WARNA (DARK THEME VIBRANT) --- */
+:root {
+    /* Warna Dasar Tema Gelap */
+    --color-background-dark: #0a0a0a; /* Lebih gelap untuk kontras maksimum */
+    --color-surface-dark: #1f1f1f; /* Untuk card dan widget */
+    --color-text-light: #f5f5f5;
+    --color-text-secondary: #cccccc;
+
+    /* Aksen Warna VIBRANT BARU */
+    --color-accent: #39ff14; /* Neon Green / Hijau Cerah */
+    --color-primary: #ff5270; /* Vibrant Pink / Merah Jambu Cerah */
+    --color-secondary-accent: #ffa500; /* Bright Orange / Oranye Terang */
+    
+    --color-link: var(--color-accent);
+    --color-link-hover: #ffffff;
+
+    /* Layout */
+    --max-width: 1200px;
+    --sidebar-width: 300px;
+    --spacing-unit: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- 2. LAYOUT UMUM DAN ACCESSIBILITY --- */
+
+.centered-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+}
+
+.skip-navigation {
+    /* ... (tetap sama) ... */
+    background: var(--color-primary);
+    color: var(--color-background-dark);
+}
+.skip-navigation:focus {
+    /* ... (tetap sama) ... */
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-link-hover);
+}
+
+/* --- 3. HEADER DAN NAVIGASI --- */
+
+.main-header {
+    background-color: var(--color-surface-dark);
+    padding: var(--spacing-unit) 0;
+    /* Border dan Shadow yang lebih berwarna */
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: 0 4px 10px rgba(255, 82, 112, 0.4); 
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: var(--spacing-unit);
+}
+
+.logo-title .logo-icon {
+    font-size: 3rem;
+    color: var(--color-accent);
+    /* Efek Glowing pada Logo */
+    text-shadow: 0 0 10px var(--color-accent), 0 0 20px rgba(57, 255, 20, 0.5);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.logo-title h1 {
+    font-size: 1.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.2rem;
+}
+
+.logo-title .subtitle {
+    color: var(--color-primary);
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Perapihan Tombol Navigasi */
+.main-nav .tabs {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 8px; 
+    flex-wrap: wrap; 
+}
+
+.nav-button {
+    padding: 10px 18px; 
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    /* Shadow dengan warna primary */
+    box-shadow: 0 2px 8px rgba(255, 82, 112, 0.3);
+    
+    flex-grow: 1; 
+    text-align: center;
+    min-width: 100px; 
+}
+
+.nav-button:hover {
+    background-color: var(--color-accent); /* Berubah ke warna accent saat hover */
+    color: var(--color-background-dark);
+    transform: translateY(-3px);
+    /* Efek Glowing yang lebih kuat saat hover */
+    box-shadow: 0 5px 15px rgba(57, 255, 20, 0.5); 
+}
+
+.new-item {
+    background-color: var(--color-secondary-accent); /* Warna Oranye untuk Sitemaps */
+    box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
+}
+
+.new-item:hover {
+    background-color: var(--color-accent);
+    box-shadow: 0 5px 15px rgba(57, 255, 20, 0.5);
+}
+
+/* --- 4. KONTEN UTAMA (POSTS GRID) --- */
+
+.main-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.posts-grid-section {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: var(--spacing-unit);
+    margin-bottom: var(--spacing-unit);
+}
+
+.section-title, .widget-title {
+    color: var(--color-primary); /* Menggunakan warna primary */
+    border-bottom: 2px solid var(--color-accent); /* Garis bawah warna accent */
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--spacing-unit);
+    font-size: 1.5rem;
+}
+
+/* Gaya Kartu Postingan dalam Grid */
+.post-card {
+    background-color: var(--color-surface-dark);
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    /* Border berwarna saat hover */
+    border-color: var(--color-accent); 
+    box-shadow: 0 8px 16px rgba(57, 255, 20, 0.3); /* Shadow accent */
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.post-card:hover .post-image {
+    transform: scale(1.05); 
+}
+
+.post-content-wrapper {
+    padding: var(--spacing-unit);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-title {
+    color: var(--color-accent); /* Judul menggunakan warna accent */
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-meta {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.read-more-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.read-more-button:hover {
+    background-color: var(--color-accent); 
+    transform: scale(1.05);
+}
+
+/* Gaya Widget Sidebar */
+.sidebar-container {
+    background-color: var(--color-surface-dark);
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    /* Tambah shadow berwarna */
+    box-shadow: 0 4px 12px rgba(255, 82, 112, 0.2); 
+}
+
+.widget ul li a:hover {
+    color: var(--color-accent);
+    transform: translateX(5px);
+    transition: transform 0.2s ease;
+}
+
+.label-tag {
+    background-color: #3a3a3a;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.label-tag:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+}
+
+/* Pagination Buttons */
+.blog-pager {
+    text-align: center;
+    margin: var(--spacing-unit) 0;
+}
+
+.pager-button {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pager-button:hover {
+    transform: scale(1.05);
+    /* Shadow yang lebih berwarna saat hover */
+    box-shadow: 0 5px 20px rgba(255, 82, 112, 0.5);
+    background-color: var(--color-accent);
+}
+
+/* --- 5. FOOTER --- */
+
+.main-footer {
+    background-color: #000000;
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--spacing-unit) 0;
+    margin-top: var(--spacing-unit);
+    border-top: 1px solid var(--color-accent);
+}
+
+
+/* --- 6. MEDIA QUERIES (RESPONSIVE) --- */
+
+/* ... (Bagian Media Queries tetap sama untuk menjaga responsivitas) ... */
+
+@media (min-width: 768px) {
+    /* Post Grid: 2 kolom untuk tablet */
+    .posts-grid-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-button {
+        flex-grow: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .centered-container {
+        flex-direction: row; 
+        align-items: flex-start; 
+    }
+    .main-content {
+        flex: 3; 
+    }
+    .sidebar-container {
+        flex: 1; 
+        max-width: var(--sidebar-width);
+    }
+    .main-nav .tabs {
+        gap: 15px; 
+    }
+    .posts-grid-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* --- Tambahan Gaya untuk Halaman Daftar Isi (Sitemaps) --- */
+
+.toc-description {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-unit);
+    padding: 1rem;
+    border-left: 5px solid var(--color-accent);
+    background-color: var(--color-surface-dark);
+}
+
+.table-of-contents {
+    padding: var(--spacing-unit) 0;
+}
+
+.toc-category-list {
+    margin-bottom: var(--spacing-unit) * 2;
+}
+
+.toc-category-list ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.toc-category-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    background-color: #2a2a2a; /* Latar belakang item */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toc-category-list li:hover {
+    background-color: #333333;
+    transform: translateX(5px);
+}
+
+.category-title {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    margin-top: var(--spacing-unit);
+    margin-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--color-text-secondary);
+    padding-bottom: 5px;
+}
+
+.toc-link {
+    flex-grow: 1; /* Agar link mengambil ruang maksimum */
+    font-weight: bold;
+    color: var(--color-text-light);
+    transition: color 0.3s ease;
+}
+
+.toc-link:hover {
+    color: var(--color-accent);
+}
+
+.toc-date {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-right: 15px;
+    min-width: 90px;
+}
+
+.toc-tag {
+    background-color: var(--color-secondary-accent);
+    color: var(--color-background-dark);
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.total-posts {
+    text-align: right;
+    font-style: italic;
+    color: var(--color-primary);
+    margin-top: var(--spacing-unit);
+}
+
+/* Penyesuaian Responsif untuk Daftar Isi */
+@media (max-width: 600px) {
+    .toc-category-list li {
+        /* Susun item menjadi kolom di layar kecil */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .toc-date {
+        order: 1;
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 0.8rem;
+    }
+    .toc-link {
+        order: 2;
+        margin-bottom: 5px;
+    }
+    .toc-tag {
+        order: 3;
+    }
+}
 /* --- Tambahan Gaya untuk Halaman Artikel Tunggal (article.html) --- */
 
 /* Memperluas Konten Utama di Desktop */
@@ -146,4 +585,4 @@
     padding: var(--spacing-unit);
     text-align: center;
 }
-
+}
